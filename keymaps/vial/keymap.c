@@ -19,6 +19,10 @@
 #include "process_key_override.h"
 #include "os_detection.h"
 
+// 疑似US配列を有効にする場合
+#define PSEUDO_US_LAYOUT_ENABLE
+
+// キー配置用定義
 #define CTL_EISU  MT(MOD_LCTL, KC_LANGUAGE_2)   // Hold: Control + Tap: Eisu
 #define LT1_KANA  LT(1, KC_LANGUAGE_1)          // Hold: Layer 1 + Tap: Kana
 #define GUI_EISU  MT(MOD_LGUI, KC_LANGUAGE_2)   // Hold: GUI + Tap: Eisu
@@ -104,6 +108,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 }
 
 // 疑似US配列を実現するためのキーコード置き換え
+#ifdef PSEUDO_US_LAYOUT_ENABLE
 const key_override_config_t dynamic_key_override_configs[] = {
     { true, 0xFFFFFFFF, MOD_BIT(KC_LSFT) | MOD_BIT(KC_RSFT), JP_2,    JP_AT    },
     { true, 0xFFFFFFFF, MOD_BIT(KC_LSFT) | MOD_BIT(KC_RSFT), JP_6,    JP_CIRC  },
@@ -130,13 +135,12 @@ const key_override_config_t dynamic_key_override_configs[] = {
 void eeconfig_init_user(void) {
     dynamic_key_override_reset();
 
-    // 登録ループ
+    // EEPROMに書き込み
     for (uint8_t i = 0; i < sizeof(dynamic_key_override_configs) / sizeof(dynamic_key_override_configs[0]); i++) {
         dynamic_key_override_set_config(i, &dynamic_key_override_configs[i]);
     }
-
-    // その他の初期化処理があればここに追記
 }
+#endif // PSEUDO_US_LAYOUT_ENABLE
 
 // レイヤーのキー配置を定義
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {

@@ -20,8 +20,19 @@
 
 #define QUICK_TAP_TERM 0
 #define TAPPING_TERM 220
-#define DYNAMIC_KEYMAP_LAYER_COUNT 5
+#define PERMISSIVE_HOLD
 #define HOLD_ON_OTHER_KEY_PRESS
+
+#define DYNAMIC_KEYMAP_LAYER_COUNT 5
+
 #define VIAL_KEYBOARD_UID {0x71, 0x6C, 0xE4, 0x1E, 0x36, 0x31, 0xDE, 0xAB}
 #define VIAL_UNLOCK_COMBO_ROWS { 0, 1 }
 #define VIAL_UNLOCK_COMBO_COLS { 0, 12 }
+
+/* EEPROM size of ATmega32U4 is 1024 bytes */
+/* VIAL_TAP_DANCE_ENTRIES consumes 10 bytes EEPROM per entry */
+#define VIAL_TAP_DANCE_ENTRIES 4
+/* VIAL_KEY_COMBO_ENTRIES consumes (6 + 2 * # of keys) bytes EEPROM per entry */
+#define VIAL_COMBO_ENTRIES 4
+/* VIAL_KEY_OVERRIDE_ENTRIES consumes 7 bytes EEPROM per entry */
+#define VIAL_KEY_OVERRIDE_ENTRIES 24
