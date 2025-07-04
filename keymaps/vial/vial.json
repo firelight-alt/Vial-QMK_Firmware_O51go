@@ -11,5 +11,124 @@
         [{"c":"#aaaaaa"},"2,0",{"c":"#cccccc"},"2,1","2,2","2,3","2,4","2,5",{"c":"#aaaaaa"},"2,6",{"c":"#cccccc"},"2,7","2,8","2,9","2,10","2,11",{"c":"#aaaaaa"},"2,12"],
         ["3,0","3,1","3,2","3,3",{"w":1.25},"3,4",{"w":1.25},"3,5",{"w":1.25},"3,7",{"w":1.25},"3,8","3,9",{"c":"#cccccc"},"3,10","3,11","3,12"]
       ]
-  }
+  },
+  "dynamic_key_override": {
+    "overrides": [
+      {
+        "modifiers": "shift",
+        "key": "JP_2",
+        "replacement": "JP_AT"
+      },
+      {
+        "modifiers": "shift",
+        "key": "JP_6",
+        "replacement": "JP_CIRC"
+      },
+      {
+        "modifiers": "shift",
+        "key": "JP_7",
+        "replacement": "JP_AMPR"
+      },
+      {
+        "modifiers": "shift",
+        "key": "JP_8",
+        "replacement": "JP_ASTR"
+      },
+      {
+        "modifiers": "shift",
+        "key": "JP_9",
+        "replacement": "JP_LPRN"
+      },
+      {
+        "modifiers": "shift",
+        "key": "JP_0",
+        "replacement": "JP_RPRN"
+      },
+      {
+        "modifiers": "shift",
+        "key": "JP_MINS",
+        "replacement": "JP_UNDS"
+      },
+      {
+        "modifiers": "shift",
+        "key": "JP_CIRC",
+        "replacement": "JP_PLUS"
+      },
+      {
+        "modifiers": "",
+        "key": "JP_CIRC",
+        "replacement": "JP_EQL"
+      },
+      {
+        "modifiers": "shift",
+        "key": "JP_SCLN",
+        "replacement": "JP_COLN"
+      },
+      {
+        "modifiers": "shift",
+        "key": "JP_COLN",
+        "replacement": "JP_DQUO"
+      },
+      {
+        "modifiers": "",
+        "key": "JP_COLN",
+        "replacement": "JP_QUOT"
+      },
+      {
+        "modifiers": "shift",
+        "key": "JP_ZKHK",
+        "replacement": "JP_TILD"
+      },
+      {
+        "modifiers": "",
+        "key": "JP_ZKHK",
+        "replacement": "JP_GRV"
+      },
+      {
+        "modifiers": "shift",
+        "key": "JP_1",
+        "replacement": "JP_TILD"
+      },
+      {
+        "modifiers": "shift",
+        "key": "JP_COMM",
+        "replacement": "JP_EXLM"
+      },
+      {
+        "modifiers": "shift",
+        "key": "JP_DOT",
+        "replacement": "JP_QUES"
+      },
+      {
+        "modifiers": "shift",
+        "key": "JP_BSLS",
+        "replacement": "JP_RABK"
+      },
+      {
+        "modifiers": "",
+        "key": "JP_BSLS",
+        "replacement": "JP_LABK"
+      }
+    ]
+  },
+  "customKeycodes": [
+    {
+      "name": "Layer1オン+かな/MO(2)",
+      "title": "Layer1オン+かな/MO(2)",
+        "shortName": "Kana/MO(2)",
+        "keycode": "0x7E00"
+    },
+    {
+      "name": "Layer1オフ+英数/Ctrl",
+      "title": "Layer1オフ+英数/Ctrl",
+      "shortName": "Eisu/Ctrl",
+      "keycode": "0x7E01"
+    },
+    {
+      "name": "Layer1オフ+GUI/Ctrl",
+      "title": "Layer1オフ+GUI/Ctrl",
+      "shortName": "GUI/Ctrl",
+      "keycode": "0x7E02s"
+    }
+  ]
 }
