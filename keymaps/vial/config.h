@@ -35,4 +35,4 @@
 /* VIAL_KEY_COMBO_ENTRIES consumes (6 + 2 * # of keys) bytes EEPROM per entry */
 #define VIAL_COMBO_ENTRIES 4
 /* VIAL_KEY_OVERRIDE_ENTRIES consumes 7 bytes EEPROM per entry */
-#define VIAL_KEY_OVERRIDE_ENTRIES 24
+#define VIAL_KEY_OVERRIDE_ENTRIES 20

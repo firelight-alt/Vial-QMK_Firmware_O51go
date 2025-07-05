@@ -19,8 +19,8 @@
 #include "process_key_override.h"
 #include "os_detection.h"
 
-// 疑似US配列を有効にする場合
-#define PSEUDO_US_LAYOUT_ENABLE
+// 疑似US配列を有効にする場合(Vial対応ファームウェアでは動作しない)
+// #define PSEUDO_US_LAYOUT_ENABLE
 
 // キー配置用定義
 #define CTL_EISU  MT(MOD_LCTL, KC_LANGUAGE_2)   // Hold: Control + Tap: Eisu
@@ -109,37 +109,49 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
 // 疑似US配列を実現するためのキーコード置き換え
 #ifdef PSEUDO_US_LAYOUT_ENABLE
-const key_override_config_t dynamic_key_override_configs[] = {
-    { true, 0xFFFFFFFF, MOD_BIT(KC_LSFT) | MOD_BIT(KC_RSFT), JP_2,    JP_AT    },
-    { true, 0xFFFFFFFF, MOD_BIT(KC_LSFT) | MOD_BIT(KC_RSFT), JP_6,    JP_CIRC  },
-    { true, 0xFFFFFFFF, MOD_BIT(KC_LSFT) | MOD_BIT(KC_RSFT), JP_7,    JP_AMPR  },
-    { true, 0xFFFFFFFF, MOD_BIT(KC_LSFT) | MOD_BIT(KC_RSFT), JP_8,    JP_ASTR  },
-    { true, 0xFFFFFFFF, MOD_BIT(KC_LSFT) | MOD_BIT(KC_RSFT), JP_9,    JP_LPRN  },
-    { true, 0xFFFFFFFF, MOD_BIT(KC_LSFT) | MOD_BIT(KC_RSFT), JP_0,    JP_RPRN  },
-    { true, 0xFFFFFFFF, MOD_BIT(KC_LSFT) | MOD_BIT(KC_RSFT), JP_MINS, JP_UNDS  },
-    { true, 0xFFFFFFFF, MOD_BIT(KC_LSFT) | MOD_BIT(KC_RSFT), JP_CIRC, JP_PLUS  },
-    { true, 0xFFFFFFFF, 0,                                   JP_CIRC, JP_EQL   },
-    { true, 0xFFFFFFFF, MOD_BIT(KC_LSFT) | MOD_BIT(KC_RSFT), JP_SCLN, JP_COLN  },
-    { true, 0xFFFFFFFF, MOD_BIT(KC_LSFT) | MOD_BIT(KC_RSFT), JP_COLN, JP_DQUO  },
-    { true, 0xFFFFFFFF, 0,                                   JP_COLN, JP_QUOT  },
-    { true, 0xFFFFFFFF, MOD_BIT(KC_LSFT) | MOD_BIT(KC_RSFT), JP_ZKHK, JP_TILD  },
-    { true, 0xFFFFFFFF, 0,                                   JP_ZKHK, JP_GRV   },
-    { true, 0xFFFFFFFF, MOD_BIT(KC_LSFT) | MOD_BIT(KC_RSFT), JP_1,    JP_TILD  },
-    { true, 0xFFFFFFFF, MOD_BIT(KC_LSFT) | MOD_BIT(KC_RSFT), JP_COMM, S(JP_1)  },
-    { true, 0xFFFFFFFF, MOD_BIT(KC_LSFT) | MOD_BIT(KC_RSFT), JP_DOT,  S(JP_SLSH) },
-    { true, 0xFFFFFFFF, MOD_BIT(KC_LSFT) | MOD_BIT(KC_RSFT), JP_BSLS, JP_RABK  },
-    { true, 0xFFFFFFFF, 0,                                   JP_BSLS, JP_LABK  }
+//These JIS keycodes have been overridden to emulate pseudo-US layout
+const key_override_t jp2_key_override    = ko_make_basic(MOD_BIT(KC_LSFT) | MOD_BIT(KC_RSFT), JP_2,    JP_AT);
+const key_override_t jp6_key_override    = ko_make_basic(MOD_BIT(KC_LSFT) | MOD_BIT(KC_RSFT), JP_6,    JP_CIRC);
+const key_override_t jp7_key_override    = ko_make_basic(MOD_BIT(KC_LSFT) | MOD_BIT(KC_RSFT), JP_7,    JP_AMPR);
+const key_override_t jp8_key_override    = ko_make_basic(MOD_BIT(KC_LSFT) | MOD_BIT(KC_RSFT), JP_8,    JP_ASTR);
+const key_override_t jp9_key_override    = ko_make_basic(MOD_BIT(KC_LSFT) | MOD_BIT(KC_RSFT), JP_9,    JP_LPRN);
+const key_override_t jp0_key_override    = ko_make_basic(MOD_BIT(KC_LSFT) | MOD_BIT(KC_RSFT), JP_0,    JP_RPRN);
+const key_override_t jpunds_key_override = ko_make_basic(MOD_BIT(KC_LSFT) | MOD_BIT(KC_RSFT), JP_MINS, JP_UNDS);
+const key_override_t jpplus_key_override = ko_make_basic(MOD_BIT(KC_LSFT) | MOD_BIT(KC_RSFT), JP_CIRC, JP_PLUS);
+const key_override_t jpeql_key_override  = ko_make_basic(0,                                   JP_CIRC, JP_EQL);
+const key_override_t jpcoln_key_override = ko_make_basic(MOD_BIT(KC_LSFT) | MOD_BIT(KC_RSFT), JP_SCLN, JP_COLN);
+const key_override_t jpdquo_key_override = ko_make_basic(MOD_BIT(KC_LSFT) | MOD_BIT(KC_RSFT), JP_COLN, JP_DQUO);
+const key_override_t jpquot_key_override = ko_make_basic(0,                                   JP_COLN, JP_QUOT);
+const key_override_t jptild_key_override = ko_make_basic(MOD_BIT(KC_LSFT) | MOD_BIT(KC_RSFT), JP_ZKHK, JP_TILD);
+const key_override_t jpgrv_key_override  = ko_make_basic(0,                                   JP_ZKHK, JP_GRV);
+const key_override_t jp1_key_override    = ko_make_basic(MOD_BIT(KC_LSFT) | MOD_BIT(KC_RSFT), JP_1,    JP_TILD);
+const key_override_t jpcomm_key_override = ko_make_basic(MOD_BIT(KC_LSFT) | MOD_BIT(KC_RSFT), JP_COMM, S(JP_1));
+const key_override_t jpslsh_key_override = ko_make_basic(MOD_BIT(KC_LSFT) | MOD_BIT(KC_RSFT), JP_DOT,  S(JP_SLSH));
+const key_override_t jprabk_key_override = ko_make_basic(MOD_BIT(KC_LSFT) | MOD_BIT(KC_RSFT), JP_BSLS, JP_RABK);
+const key_override_t jplabk_key_override  = ko_make_basic(0,                                  JP_BSLS, JP_LABK);
+
+// This globally defines all key overrides to be used
+const key_override_t *key_overrides[] = {
+	&jp2_key_override,
+	&jp6_key_override,
+	&jp7_key_override,
+	&jp8_key_override,
+	&jp9_key_override,
+	&jp0_key_override,
+	&jpunds_key_override,
+	&jpplus_key_override,
+	&jpeql_key_override,
+	&jpcoln_key_override,
+	&jpdquo_key_override,
+	&jpquot_key_override,
+	&jptild_key_override,
+	&jpgrv_key_override,
+	&jp1_key_override,
+	&jpcomm_key_override,
+	&jpslsh_key_override,
+    &jprabk_key_override,
+	&jplabk_key_override
 };
-
-// キー置き換えの定義をEEPROMに書き込む
-void eeconfig_init_user(void) {
-    dynamic_key_override_reset();
-
-    // EEPROMに書き込み
-    for (uint8_t i = 0; i < sizeof(dynamic_key_override_configs) / sizeof(dynamic_key_override_configs[0]); i++) {
-        dynamic_key_override_set_config(i, &dynamic_key_override_configs[i]);
-    }
-}
 #endif // PSEUDO_US_LAYOUT_ENABLE
 
 // レイヤーのキー配置を定義
